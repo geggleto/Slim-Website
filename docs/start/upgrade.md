@@ -35,7 +35,9 @@ Example:
 Signature
 ----
 The middleware signature has changed from a class to a function
-New signature: ` $app->add(function ($req, $res, $next) {}); `
+
+New signature: 
+` $app->add(function ($req, $res, $next) {}); `
 
 Execution
 -----
