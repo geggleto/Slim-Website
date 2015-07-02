@@ -8,19 +8,12 @@ In your applications, you should transition to using the withStatusCode() and wi
 
 Example In Slim 2.x:
 
-{% highlight php %}
-
     $app->get(‘/’, function () {  $app->halt(400, ‘Bad Request’); });
-    
-{% endhighlight %}
+
 
 And now in Slim 3.x:
 
-{% highlight php %}
-
-$app->get(‘/’, function ($req, $res, $args) { return $res->withStatus(400)->withBody(“Bad Request”); });
-
-{% endhighlight %}
+    $app->get(‘/’, function ($req, $res, $args) { return $res->withStatus(400)->withBody(“Bad Request”); });
 
 # Hooks
 Slim v3 no longer has the concept of hooks. Hooks were removed as they duplicate the functionality already present in middlewares. You should be able to easily convert your Hook code into Middleware code.
@@ -33,17 +26,16 @@ In Slim v2.x one would use the helper function $app->redirect(); to trigger a re
 In Slim v3.x one can do the same with using the Response class like so.
 
 Example:
-{% highlight php %}
-$app->get(‘/’, function ($req, $res, $args) {
-    return $res->withStatus(301)->withHeader(“Location”, “yournewuri”);
-});
-{% endhighlight %}
+
+    $app->get(‘/’, function ($req, $res, $args) {
+        return $res->withStatus(301)->withHeader(“Location”, “yournewuri”);
+    });
 
 # Middleware
 Signature
 ----
 The middleware signature has changed from a class to a function
-New signature: {% highlight php %}php $app->add(function ($req, $res, $next) {}); {% endhighlight %}
+New signature: ` $app->add(function ($req, $res, $next) {}); `
 
 Execution
 -----
@@ -63,12 +55,12 @@ Slim v3.0 requires php 5.4+
 
 # Route Callbacks
 In v3.0 we have adopted a new callback signature
-{% highlight php %}
-$app->get('/', function (\Psr\Http\Message\ServerRequestInterface $request,
-\Psr\Http\Message\ResponseInterface $response, $args) {
-//do stuff!
-});
-{% endhighlight %}
+
+    $app->get('/', function (\Psr\Http\Message\ServerRequestInterface $request,
+    \Psr\Http\Message\ResponseInterface $response, $args) 
+    {
+        //do stuff!
+    });
 
 # New Router
 Slim now utilizes a new more powerful router ( https://github.com/nikic/FastRoute )!
@@ -76,4 +68,5 @@ Slim now utilizes a new more powerful router ( https://github.com/nikic/FastRout
 # Route Middleware
 The syntax for adding route middleware has changed slightly.
 In v3.0:
-{% highlight php %}php $app->get(…)->add($mw2)->add($mw1); {% endhighlight %}
+
+`$app->get(…)->add($mw2)->add($mw1);`
