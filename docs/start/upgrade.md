@@ -9,13 +9,17 @@ In your applications, you should transition to using the withStatusCode() and wi
 Example In Slim 2.x:
 
 {% highlight php %}
+
     $app->get(‘/’, function () {  $app->halt(400, ‘Bad Request’); });
+    
 {% endhighlight %}
 
 And now in Slim 3.x:
 
 {% highlight php %}
+
 $app->get(‘/’, function ($req, $res, $args) { return $res->withStatus(400)->withBody(“Bad Request”); });
+
 {% endhighlight %}
 
 # Hooks
